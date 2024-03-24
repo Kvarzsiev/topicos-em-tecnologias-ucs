@@ -1,0 +1,19 @@
+{
+  "name": "topicos-em-tecnologias-ucs",
+  "version": "1.0.0",
+  "description": "topicos-em-tecnologias-ucs",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "topicos-em-tecnologias-ucs"
+  },
+  "author": "Kvarzsiev",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^10.9.0"
+  },
+  "devDependencies": {}
+}
