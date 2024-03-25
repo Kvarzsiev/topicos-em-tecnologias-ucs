@@ -5,6 +5,7 @@ import {
   ref,
   getDownloadURL,
   listAll,
+  uploadBytes,
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-storage.js";
 
 const firebaseConfig = {
@@ -24,31 +25,48 @@ const analytics = getAnalytics(app);
 
 const storage = getStorage(app);
 
-const allFilesRef = ref(storage);
+const storageRef = ref(storage);
 
-getDownloadURL(ref(storage, "borracho.png"))
-  .then((url) => {
-    // Or inserted into an <img> element
-    const img = document.getElementById("mainImg");
-    img.setAttribute("src", url);
+listAll(storageRef)
+  .then((res) => {
+    const randomIndex = Math.floor(Math.random() * res.items.length);
+    getDownloadURL(ref(storage, res.items[randomIndex]["_location"]["path_"]))
+      .then((url) => {
+        // Or inserted into an <img> element
+        const img = document.getElementById("mainImg");
+        img.setAttribute("src", url);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   })
   .catch((error) => {
     console.log(error);
   });
 
-// Find all the prefixes and items.
-// listAll(allFilesRef)
-//   .then((res) => {
-//     console.log("then");
-//     // res.prefixes.forEach((folderRef) => {
-//     //   // All the prefixes under listRef.
-//     //   // You may call listAll() recursively on them.
-//     // });
-//     res.items.forEach((itemRef) => {
-//       // All the items under listRef.
-//       console.log("item ", itemRef);
-//     });
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.querySelector("button");
+  button.addEventListener("click", handleImageInput);
+});
+
+function handleImageInput() {
+  try {
+    const input = document.getElementById("imageInput");
+
+    const file = input.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+
+      uploadBytes(ref(storage, self.crypto.randomUUID()), file).then(() => {
+        window.location.reload();
+      });
+    }
+  } catch (err) {
+    console.log("erro", err);
+  }
+}
