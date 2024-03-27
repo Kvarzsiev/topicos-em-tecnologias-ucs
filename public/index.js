@@ -45,7 +45,8 @@ listAll(storageRef)
   });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const button = document.querySelector("button");
+  console.log("evento");
+  const button = document.querySelector("#botao");
   button.addEventListener("click", handleImageInput);
 });
 
