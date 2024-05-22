@@ -5,11 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shared Images Database</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="picture.ico" />
     <link rel="stylesheet" href="./index.css" />
+    <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-    <div style="display: flex; justify-content: center; flex-direction: column">
-      <img id="mainImg" style="margin: auto; max-height: 60vh" />
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 70vh;
+      "
+    >
+      <img
+        id="mainImg"
+        style="margin: auto; max-height: 60vh; max-width: 95vw"
+      />
 
       <div style="display: flex; justify-content: center; margin-top: 2rem">
         <button onclick="window.location.reload()">Refresh</button>

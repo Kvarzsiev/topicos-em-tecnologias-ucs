@@ -1,0 +1,39 @@
+{
+  "short_name": "Shared Images",
+  "name": "Shared Images Database",
+  "icons": [
+    {
+      "src": "/picture.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "background_color": "#ffe1de",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ffc5bf",
+  "shortcuts": [
+    {
+      "name": "Random Image",
+      "short_name": "Image",
+      "description": "View a random uploaded image",
+      "url": "/?source=pwa"
+    }
+  ],
+  "description": "Get and / or upload random images",
+  "screenshots": [
+    {
+      "src": "/screenshot-1.png",
+      "type": "image/png",
+      "sizes": "384x854",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/screenshot-2.jpg",
+      "type": "image/png",
+      "sizes": "384x854",
+      "form_factor": "narrow"
+    }
+  ]
+}
